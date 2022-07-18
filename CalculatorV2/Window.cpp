@@ -1,8 +1,12 @@
 #include "Window.h"
+wxBEGIN_EVENT_TABLE(Window, wxFrame)
 
+EVT_BUTTON(wxID_ANY, onButtonClick)
 
+wxEND_EVENT_TABLE()
 
 Window::Window() : wxFrame(nullptr, wxID_ANY, "SWE Calculator", wxPoint(200, 200), wxSize(500, 500)) {
+
 	wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
 	wxBoxSizer* gridAreaSizer = new wxBoxSizer(wxVERTICAL);
 	textBox = new wxTextCtrl(this, wxID_ANY, "");
@@ -57,6 +61,8 @@ Window::Window() : wxFrame(nullptr, wxID_ANY, "SWE Calculator", wxPoint(200, 200
 
 
 	SetSizer(mainSizer);
+
+	btn0->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Window::onButtonClick, this);
 	
 
 	
@@ -66,5 +72,53 @@ Window::Window() : wxFrame(nullptr, wxID_ANY, "SWE Calculator", wxPoint(200, 200
 
 
 
+
+}
+void Window::onButtonClick(wxCommandEvent &evt) {
+	int iD = evt.GetId();
+	switch (iD) {
+	case 0: textBox->AppendText("0");
+		break;
+	case 1:  textBox->AppendText("1");
+		break;
+	case 2:  textBox->AppendText("2");
+		break;
+	case 3:  textBox->AppendText("3");
+		break;
+	case 4:  textBox->AppendText("4");
+		break;
+	case 5:  textBox->AppendText("5");
+		break;
+	case 6:  textBox->AppendText("6");
+		break;
+	case 7:  textBox->AppendText("7");
+		break;
+	case 8:  textBox->AppendText("8");
+		break;
+	case 9:  textBox->AppendText("9");
+		break;
+	case 10:  textBox->AppendText("+");
+		break;
+	case 11:  textBox->AppendText("-");
+		break;
+	case 12:  textBox->AppendText("/");
+		break;
+	case 13:  textBox->AppendText("C");
+		break;
+	case 14:  textBox->AppendText("%");
+		break;
+	case 15:  textBox->AppendText("Mode");
+		break;
+	case 16:  textBox->AppendText("+/-");
+		break;
+	case 17:  textBox->AppendText("=");
+		break;
+	case 18:  textBox->AppendText("X");
+		break;
+	case 19:  textBox->AppendText("Pi");
+		break;
+	}
+	
+	
 
 }

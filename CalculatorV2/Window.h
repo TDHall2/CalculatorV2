@@ -4,6 +4,7 @@
 
 class Window : public wxFrame
 {
+	wxDECLARE_EVENT_TABLE();
 public:
 	int width = 4;
 	int height = 5;
@@ -41,6 +42,8 @@ public:
 
 public:
 	Window();
+	void onButtonClick(wxCommandEvent &evt);
+	
 	
 
 };
